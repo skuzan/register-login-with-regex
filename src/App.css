@@ -1,38 +1,247 @@
-.App {
+/* iOS genel his */
+body {
+  background: #f5f6f8;
+}
+
+/* NAVBAR WRAPPER */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 12px 20px;
+  background: #f7f8fa;
+  border-bottom: 1px solid #e6e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* NAV LINKS */
+.navbar a {
+  font-size: 15px;
+  font-weight: 500;
+  color: #6b6b6b;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 14px;
+  transition: all 0.25s ease;
+}
+
+/* HOVER */
+.navbar a:hover {
+  background: #e9e9ee;
+  color: #000;
+}
+
+/* ACTIVE CLASS (NavLink automatically adds “active”) */
+.navbar a.active {
+  background: #007aff;       /* iOS Blue */
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(0, 122, 255, 0.25);
+}
+
+/* Ortalanmış container */
+.ios-form-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+/* Kart görünümü (iOS card) */
+.ios-form-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: 2rem 1.8rem 2.2rem;
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+/* Başlıklar */
+.form-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+  color: #111827;
+}
+
+.form-subtitle {
+  font-size: 0.9rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+/* Form layout */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Grup */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+/* Label */
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+/* Input (iOS style) */
+.form-input {
+  border: none;
+  background: #f9fafb;
+  border-radius: 14px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.95rem;
+  color: #111827;
+  box-shadow: inset 0 0 0 1px rgba(209, 213, 219, 0.8);
+  transition: all 0.2s ease;
+}
+
+.form-input::placeholder {
+  color: #9ca3af;
+}
+
+.form-input:focus {
+  outline: none;
+  box-shadow: inset 0 0 0 1px #007aff, 0 0 0 3px rgba(0, 122, 255, 0.15);
+  background: #ffffff;
+}
+
+/* Hatalı input */
+.input-error {
+  box-shadow: inset 0 0 0 1px #ef4444, 0 0 0 3px rgba(248, 113, 113, 0.25);
+}
+
+/* Hata mesajı span */
+.error-text {
+  font-size: 0.78rem;
+  color: #ef4444;
+  margin-left: 2px;
+}
+
+/* Success mesajı */
+.success-message {
+  background: #ecfdf3;
+  color: #166534;
+  font-size: 0.85rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  border: 1px solid #bbf7d0;
+}
+
+/* Buton (iOS primary) */
+.ios-form-submit {
+  margin-top: 0.5rem;
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  font-size: 0.98rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #007aff, #00b4ff);
+  color: #ffffff;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 122, 255, 0.35);
+  transition: all 0.2s ease;
+}
+
+.ios-form-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 26px rgba(0, 122, 255, 0.4);
+}
+
+.ios-form-submit:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 14px rgba(0, 122, 255, 0.3);
+}
+
+/* Alt kısım: "Already have an account?" */
+.auth-footer-text {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;      /* gri ton */
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Login link */
+.auth-link {
+  color: #007aff;      /* iOS mavi */
+  font-weight: 600;
+  text-decoration: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.auth-link:hover {
+  text-decoration: underline;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.auth-extra {
+  margin-top: 0.5rem;
+  margin-bottom: 0.25rem;
+  font-size: 0.8rem;
+}
+
+.auth-checkbox-label {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.45rem;
+  color: #6b7280;
 }
 
-.App-link {
-  color: #61dafb;
+.auth-checkbox {
+  width: 15px;
+  height: 15px;
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #f9fafb;
+  position: relative;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.auth-checkbox:checked {
+  background: #007aff;
+  border-color: #007aff;
+}
+
+.auth-checkbox:checked::after {
+  content: "✔";
+  position: absolute;
+  font-size: 0.7rem;
+  color: #ffffff;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -58%);
+}
+
+/* Alt kısım: "Already have an account?" / "Don't have an account?" */
+.auth-footer-text {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* Login/Register link */
+.auth-link {
+  color: #007aff;       /* iOS mavi */
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
 }
