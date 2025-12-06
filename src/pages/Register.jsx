@@ -12,6 +12,29 @@ import { Link } from "react-router";
 
 
 const Register = () => {
+  const getPasswordStrength = (value) => {
+    if (!value) {
+      return { label: "", percent: 0, colorClass: "" };
+    }
+
+    let score = 0;
+    if (value.length >= 8) score += 1;
+    if (/[A-Z]/.test(value)) score += 1;
+    if (/[0-9]/.test(value)) score += 1;
+    if (/[^A-Za-z0-9]/.test(value)) score += 1;
+
+    const labels = ["Weak", "Fair", "Good", "Strong"];
+    const colors = ["weak", "fair", "good", "strong"];
+
+    const index = Math.min(score, 4) - 1;
+
+    return {
+      label: labels[index] || "",
+      percent: (score / 4) * 100,
+      colorClass: colors[index] || "",
+    };
+  };
+
   const [form, setForm] = useState({
     fullName: "",
     username: "",
@@ -111,6 +134,8 @@ const Register = () => {
     }
   };
 
+  const passwordStrength = getPasswordStrength(form.password);
+
   return (
     <div className="form-container ios-form-container">
       <div className="ios-form-card">
@@ -190,6 +215,19 @@ const Register = () => {
                 {showPassword ? "Hide" : "Show"}
               </button>
             </div>
+            {form.password && (
+              <div className="strength-meter">
+                <div className="strength-track">
+                  <div
+                    className={`strength-fill ${passwordStrength.colorClass}`}
+                    style={{ width: `${passwordStrength.percent}%` }}
+                  />
+                </div>
+                <span className="strength-label">
+                  {passwordStrength.label}
+                </span>
+              </div>
+            )}
             {errors.password && (
               <span className="error-text">{errors.password}</span>
             )}
