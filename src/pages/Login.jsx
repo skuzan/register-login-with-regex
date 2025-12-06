@@ -9,6 +9,13 @@ const Login = ({ setIsLogin }) => {
 
   const [errors, setErrors] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  
+
+const togglePassword = () => {
+  setShowPassword((prev) => !prev);
+};
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -105,14 +112,23 @@ const Login = ({ setIsLogin }) => {
           {/* Password */}
           <div className="form-group">
             <label className="form-label">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              className={`form-input ${errors.password ? "input-error" : ""}`}
-              placeholder="••••••••"
-            />
+            <div className="password-wrapper">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+                className={`form-input ${errors.password ? "input-error" : ""}`}
+                placeholder="••••••••"
+              />
+              <button
+                type="button"
+                className="show-password-btn"
+                onClick={togglePassword}
+              >
+                {showPassword ? "Hide" : "Show"}
+              </button>
+            </div>
             {errors.password && (
               <span className="error-text">{errors.password}</span>
             )}
